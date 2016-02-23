@@ -16,7 +16,7 @@ namespace Jysk2_0
     public partial class JyskDBEntities : DbContext
     {
         public JyskDBEntities()
-            : base("DefaultConnection")
+            : base("name=JyskDBEntities")
         {
         }
     
