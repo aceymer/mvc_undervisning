@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Jysk2_0.Models
 {
+    //Just a comment
     public class PaperSelectedViewModel
     {
         public Paper Paper { get; set; }
