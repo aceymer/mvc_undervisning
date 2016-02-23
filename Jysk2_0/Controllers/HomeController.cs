@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jysk2_0.ToastrHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,10 +7,11 @@ using System.Web.Mvc;
 
 namespace Jysk2_0.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AbstractMessageController
     {
         public ActionResult Index()
         {
+            AddToastMessage("Welcome", "Index opened", ToastType.Error);
             return View();
         }
 
@@ -26,5 +28,6 @@ namespace Jysk2_0.Controllers
 
             return View();
         }
+        
     }
 }

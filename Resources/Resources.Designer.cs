@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banana.
+        /// </summary>
+        public static string Banana {
+            get {
+                return ResourceManager.GetString("Banana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selections.
         /// </summary>
         public static string Selections {

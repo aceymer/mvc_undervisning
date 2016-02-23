@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Jysk2_0.ToastrHelper;
 using Jysk2_0.Models;
 using Jysk2_0.Attributes;
+using Utils;
 
 namespace Jysk2_0.Controllers
 {
@@ -29,6 +30,7 @@ namespace Jysk2_0.Controllers
         // GET: Papers/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -57,6 +59,7 @@ namespace Jysk2_0.Controllers
         {
             if (ModelState.IsValid)
             {
+                var ost = MyUtilsNiceness.ConvertString("ost");
                 db.Papers.Add(paper);
                 await db.SaveChangesAsync();
                 this.AddToastMessage("Congratulations", "Paper is created", ToastType.Success);

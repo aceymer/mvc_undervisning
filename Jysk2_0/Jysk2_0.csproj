@@ -210,6 +210,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PapersController.cs" />
+    <Compile Include="Controllers\PapersManagerController.cs" />
+    <Compile Include="Controllers\ShoppingCart.cs" />
     <Compile Include="EntityExtenstions\ColumnWidth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,7 +302,9 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -343,6 +347,11 @@
     <Content Include="App_Code\ToastrBuilder.cshtml" />
     <Content Include="Views\Shared\_Toastr.cshtml" />
     <Content Include="Views\Account\AccessDenied.cshtml" />
+    <Content Include="Views\PapersManager\Create.cshtml" />
+    <Content Include="Views\PapersManager\Delete.cshtml" />
+    <Content Include="Views\PapersManager\Details.cshtml" />
+    <Content Include="Views\PapersManager\Edit.cshtml" />
+    <Content Include="Views\PapersManager\Index.cshtml" />
     <None Include="Web.Local IIS.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -350,6 +359,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -363,6 +373,10 @@
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{cf54e93f-110b-4fc4-8035-8c691fd9ec9c}</Project>
       <Name>Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{83F7CCEC-D5C7-48D3-B597-2CFFF484F2D5}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
