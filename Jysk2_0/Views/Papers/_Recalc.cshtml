@@ -1,0 +1,43 @@
+﻿@model Jysk2_0.Models.RecalcViewModel
+
+@ViewBag.Id -- Here!!
+
+
+<div class="col-md-4">
+    @Html.DropDownListFor(n => n.SelectedColorId,
+                Model.Colors,
+                "Vælg farve", new { @id= "ddl" })
+    @Html.DropDownListFor(m => m.ColumnWidths,
+                Model.ColumnWidths,
+                "Vælg spaltebredde og højde (mm)")
+    @Html.DropDownListFor(m => m.PaperTypes,
+                Model.PaperTypes,
+                "Vælg spaltebredde og højde (mm)")
+</div>
+
+@Html.Partial("_Toastr")
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#ddl").change(function() {
+                var strSelected = "";
+                $("#ddl option:selected").each(function() {
+                    strSelected += $(this)[0].value;
+                });
+                var arrayIds = [];
+                $("#cb-table input:checkbox:checked").each(function () {
+                    arrayIds.push(this.id);
+                });
+                $.ajax({
+                    data: { "ids": JSON.stringify(arrayIds), "strSelected": strSelected },
+                    datatype: "json",
+                    type: "POST",
+                    url: '@Url.Action("ReCalculate", "Papers")',
+                    cache: false,
+                    success: function (data) {
+                        $('#recalcvalue').html(data);
+                    }
+                });
+            });
+        });
+    </script>    

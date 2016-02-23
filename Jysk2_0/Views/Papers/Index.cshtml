@@ -1,0 +1,121 @@
+﻿@model Jysk2_0.Models.PaperListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (@User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<div class="col-md-7">
+    <table class="table" id="cb-table">
+        <tr>
+            <th>
+                @Resources.Resources.Selections
+            </th>
+            <th>
+                Aviser
+            </th>
+            <th>
+                Oplag
+            </th>
+            <th>
+                Læsere
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model.PaperSelectedList)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.Selected, new { @class="IdChecked", @id=@item.Paper.Id})
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paper.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paper.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paper.Readers)
+                </td>
+                <td>
+                    <a id="deleteItem" class="deleteItem" data-target="#basic" data-toggle="modal" data-id="@item.Paper.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div id="recalcvalue" class="col-md-4"></div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" type="button" class="btn btn-default">Cancel</button>
+                <button id="btnContinueDelete" type="button" class="btn btn-primary">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+<script type="text/javascript">
+    //Recalc JS
+    $('.IdChecked').click(function() {
+        var tableRow = $(this).parent().parent();
+        var id = $(this).attr('id');
+        var strSelected = "";
+        $("#ddl option:selected").each(function () {
+            strSelected += $(this)[0].value;
+        });
+        var arrayIds = [];
+        $("#cb-table input:checkbox:checked").each(function () {
+            arrayIds.push(this.id);
+        });
+        $.ajax({
+            data: { "ids": JSON.stringify(arrayIds), "strSelected": strSelected },
+            datatype: "json",
+            type: "POST",
+            url: '@Url.Action("ReCalculate", "Papers")',
+            cache: false,
+            success: function (data) {
+                $('#recalcvalue').html(data);
+            }
+        });
+    });
+
+
+    //Delete modal JS
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+    });
+    $('#btnContinueDelete').click(function () {
+        $.post('@Url.Action("Delete", "Papers")', { id: item_to_delete })
+        .done(function (data) {
+            $('#basic').modal('hide');
+            window.location.href = '@Url.Action("Index", "Papers")';
+        });
+    });
+</script>
+    
+}

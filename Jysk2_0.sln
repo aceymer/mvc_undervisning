@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25008.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jysk2_0", "Jysk2_0\Jysk2_0.csproj", "{E32765F6-2F24-4829-965D-CBAEBAA6E2BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{CF54E93F-110B-4FC4-8035-8C691FD9EC9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A1464C2-BE36-4D34-AD75-92D9B55C3EC1}"
+	ProjectSection(SolutionItems) = preProject
+		Grant.sql = Grant.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E32765F6-2F24-4829-965D-CBAEBAA6E2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32765F6-2F24-4829-965D-CBAEBAA6E2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32765F6-2F24-4829-965D-CBAEBAA6E2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32765F6-2F24-4829-965D-CBAEBAA6E2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF54E93F-110B-4FC4-8035-8C691FD9EC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF54E93F-110B-4FC4-8035-8C691FD9EC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF54E93F-110B-4FC4-8035-8C691FD9EC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF54E93F-110B-4FC4-8035-8C691FD9EC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

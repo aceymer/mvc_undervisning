@@ -1,0 +1,6 @@
+﻿@using Jysk2_0.ToastrHelper
+@if (ViewData.ContainsKey("Toastr"))
+{
+    Toastr toastr = ViewData["Toastr"] as Toastr;
+    @ToastrBuilder.ShowToastMessages(toastr);
+}
