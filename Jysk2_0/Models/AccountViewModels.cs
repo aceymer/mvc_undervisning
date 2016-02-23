@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Jysk2_0.Models
 {
+    // Comment 2
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
