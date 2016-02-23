@@ -6,7 +6,7 @@
 <div class="col-md-4">
     @Html.DropDownListFor(n => n.SelectedColorId,
                 Model.Colors,
-                "Vælg farve", new { @id= "ddl" })
+                "Vælg farve", new { @id= "ddl", @class= "dropdown" })
     @Html.DropDownListFor(m => m.ColumnWidths,
                 Model.ColumnWidths,
                 "Vælg spaltebredde og højde (mm)")

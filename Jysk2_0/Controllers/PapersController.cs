@@ -11,6 +11,7 @@ using Jysk2_0.ToastrHelper;
 using Jysk2_0.Models;
 using Jysk2_0.Attributes;
 using Utils;
+using Jysk2_0.Proxy;
 
 namespace Jysk2_0.Controllers
 {
@@ -21,7 +22,7 @@ namespace Jysk2_0.Controllers
         // GET: Papers
         public ActionResult Index()
         {
-            List<Paper> papers =  db.Papers.ToList();
+            List<Paper> papers =  new PapersProxy().ReadAll().ToList();
             PaperListViewModel viewModel = new PaperListViewModel();
             viewModel.PaperSelectedList = papers.Select(x => new PaperSelectedViewModel() { Paper = x }).ToList();
             return View(viewModel);
@@ -55,13 +56,13 @@ namespace Jysk2_0.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AccessDeniedAuthorizeAttribute(Roles = "Admin")]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Amount,Readers,PricePrMM")] Paper paper)
+        public ActionResult Create([Bind(Include = "Id,Name,Amount,Readers,PricePrMM")] Paper paper)
         {
             if (ModelState.IsValid)
             {
                 var ost = MyUtilsNiceness.ConvertString("ost");
-                db.Papers.Add(paper);
-                await db.SaveChangesAsync();
+
+                new PapersProxy().Add(paper);
                 this.AddToastMessage("Congratulations", "Paper is created", ToastType.Success);
                 return RedirectToAction("Index");
             }
