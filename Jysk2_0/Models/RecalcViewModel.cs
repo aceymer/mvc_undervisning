@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Jysk2_0.Models
 {
+    //Recalc test
     public class RecalcViewModel
     {
         public int SelectedColorId { get; set; }
